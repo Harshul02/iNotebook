@@ -1,4 +1,5 @@
 // const { default: userEvent } = require('@testing-library/user-event');
+require('dotenv').config()
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User')
@@ -6,7 +7,7 @@ const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const JWT_SECRET = "IamHero123";
+const JWT_SECRET = process.env.SECRET;
 
 
 router.post('/createuser',[
@@ -43,9 +44,48 @@ async (req,res)=>{
     res.json(authtoken);
 }catch(error){
     console.error(error.message);
-    res.status(500).send("Some Error occured");
+    res.status(500).send("Internal server Error");
 }
 },
 );
+
+// Authenticate a user
+router.post('/login',[
+    body('email', 'Enter a valid Email').isEmail(),
+    body('password', 'Password cannot be blank').exists(),
+],
+async (req,res)=> {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    };
+
+    const {email,password} = req.body;
+    try{
+        let user =await User.findOne({email});
+        if (!user) {
+            return res.status(400).json({ errors:"Please try to login with correct credentials"});
+          };
+
+          const passwordCompare =await bcrypt.compare(password,user.password);
+          if (!passwordCompare) {
+            return res.status(400).json({ errors:"Please try to login with correct credentials"});
+          };
+
+          const data = {
+            user: {
+                id: user.id
+            }
+          }
+
+          const authtoken = jwt.sign(data,JWT_SECRET);
+          res.json(authtoken);
+    }catch(error){
+        console.error(error.message);
+    res.status(500).send("Internal server Error");
+    }
+
+
+})
 
 module.exports = router;
