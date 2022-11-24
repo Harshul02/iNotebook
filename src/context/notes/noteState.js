@@ -21,6 +21,24 @@ const NoteState = (props)=>{
           "tag": "personal",
           "date": "2022-11-24T07:11:27.548Z",
           "__v": 0
+        },
+        {
+          "_id": "637f191f5955689d54c84906",
+          "user": "637f17c5390bdcac32780202",
+          "title": "My Personal Data",
+          "description": "Please wake up early",
+          "tag": "personal",
+          "date": "2022-11-24T07:11:27.548Z",
+          "__v": 0
+        },
+        {
+          "_id": "637f191f5955689d54c84906",
+          "user": "637f17c5390bdcac32780202",
+          "title": "My Personal Data",
+          "description": "Please wake up early",
+          "tag": "personal",
+          "date": "2022-11-24T07:11:27.548Z",
+          "__v": 0
         }
       ]
 
