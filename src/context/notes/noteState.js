@@ -40,18 +40,7 @@ const NoteState = (props)=>{
             
             body: JSON.stringify({title, description, tag})
           });
-          const json = await response.json();
-        //   console.log(json);
-
-        const note = {
-            "_id": "637f191f59fewf55689d54c84906",
-            "user": "637f17c5390bdcac32780202",
-            "title": title,
-            "description": description,
-            "tag": "personal",
-            "date": "2022-11-24T07:11:27.548Z",
-            "__v": 0
-          }
+          const note = await response.json();
           setNotes(notes.concat(note));
       }
 
@@ -65,7 +54,7 @@ const NoteState = (props)=>{
               "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3ZjE3YzUzOTBiZGNhYzMyNzgwMjAyIn0sImlhdCI6MTY2OTI5OTI0Nn0.svbEoUkbpnLwhYLSZwa-Hqjh6v69_n3rnMHlSMw7WzQ" 
             },
           });
-
+          //eslint-disable-next-line
           const json = response.json();
         //   console.log(json);
 
@@ -86,6 +75,7 @@ const NoteState = (props)=>{
             
             body: JSON.stringify({title,description, tag})
           });
+          //eslint-disable-next-line
           const json =await  response.json();
         //   console.log(json);
 
