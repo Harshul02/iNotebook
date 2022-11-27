@@ -26,7 +26,7 @@ export default function AddNote(props) {
   </div>
   <div className="form-group">
     <label htmlFor="description">Description</label>
-    <input type="text" className="form-control" id="description" value={note.description} name='description' placeholder="Enter Description" onChange={onChange} minLength={5} required/>
+    <textarea type="text" className="form-control" id="description" value={note.description} name='description' placeholder="Enter Description" onChange={onChange} minLength={5} rows={3} cols={40} required/>
   </div>
   <div className="form-group">
     <label htmlFor="tag">Tag</label>

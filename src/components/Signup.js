@@ -23,11 +23,11 @@ const Signup = (props) => {
     {
       //redirect
       localStorage.setItem('token', json.authToken);
-      navigate("/");
+      navigate("/login");
       props.showAlert("Account Created Successfully", "success");
     }
     else{
-      props.showAlert("Invalid Credentials", "danger");
+      props.showAlert("Invalid Credentials or User Already Exist", "danger");
     }
   }
 
