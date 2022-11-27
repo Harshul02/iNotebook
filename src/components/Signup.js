@@ -36,9 +36,9 @@ const Signup = (props) => {
   };
 
   return (
-    <div className='container mt-2'>
-    <h2 className='my-2'>Create an account to use iNotebook</h2>
-      <form onSubmit={handleSubmit}>
+    <div className='container mt-2 d-flex justify-content-center'>
+    <h2 className='my-2' style={{position: "absolute"}}>Create an account</h2>
+      <form onSubmit={handleSubmit} style={{position: "absolute", marginTop: "70px"}}>
   <div className="my-3">
     <label htmlFor="name" className="form-label">Name</label>
     <input type="text" className="form-control" id="name" name='name' aria-describedby="emailHelp" onChange={onChange} />
